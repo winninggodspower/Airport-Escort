@@ -31,11 +31,22 @@ function nextPrev(n) {
     x[currentTab].style.display = "none";
     // Increase or decrease the current tab by 1:
     currentTab = currentTab + n;
+
+    // if you have reached the second to last input form
+    if (currentTab >= x.length - 1) {
+        setTotal()
+    }
+
     // if you have reached the end of the form... :
     if (currentTab >= x.length) {
         //...the form gets submitted:
-        document.getElementById("regForm").submit();
-        return false;
+
+        document.querySelector('.modal-content').innerHTML = `
+        <div class="modal-header">
+            <h4 class="modal-title text-primary fs-5 flex-grow-1 text-center" id="exampleModalLabel">successfully requested escort</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <img src="./assets/img/thumb-up.png" alt="">`;
     }
     // Otherwise, display the correct tab:
     showTab(currentTab);
@@ -67,6 +78,43 @@ function progressIndicator(n) {
     document.getElementById('progress-bar').style.width = new String(percentUnitBar * n) + '%';    
 }
 
+
+function setTotal(){
+    let Total = 0;
+
+    // caulation for transport expences
+    let transportEspence = new Number(document.querySelector('input[name="transportation"]:checked').getAttribute('data-transport-price'));
+    document.getElementById('transport-expence').innerText = transportEspence;
+
+
+    // caulation for security expences
+    let securityEspence = 0;
+    if (document.querySelector('input[name="security"]:checked')){
+           securityEspence = document.querySelector('input[name="security-yes-option"]:checked').getAttribute('data-security-price');
+           securityEspence = new Number(securityEspence)
+    }
+    if (document.querySelector('input[name="armed"]').checked) {
+        securityEspence += new Number(document.querySelector('input[name="armed"]').getAttribute('data-armed-price'))
+    }
+    document.getElementById('security-expence').innerText = securityEspence;
+
+
+    // caulation for shirt expences
+    let shirtEspence = 0;
+    if (document.querySelector('input[name="queen-tshirt-size"]:checked')) {
+        shirtEspence = new Number(document.querySelector('input[name="queen-tshirt-size"]:checked').getAttribute('data-qshirt-price'));
+        document.getElementById('shirt-expence').innerText = shirtEspence
+    }
+
+
+    // caulation for excort expences
+    let escortService = new Number(document.querySelector('input[name="escort-service"]:checked').getAttribute('data-escort-price'));
+    document.getElementById('escort-service').innerText = escortService;
+
+    Total = transportEspence + securityEspence + shirtEspence + escortService + 8;
+    document.getElementById('total-expence').innerText = Total;
+
+}
 
 document.getElementById('escort-form').addEventListener('submit', (e)=>{
     e.preventDefault()
