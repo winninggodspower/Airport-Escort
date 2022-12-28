@@ -100,7 +100,7 @@ function setTotal(){
 
     // caulation for security expences
     let securityEspence = 0;
-    if (document.querySelector('input[name="security"]:checked')){
+    if (document.querySelector('input[name="security"]:checked') && document.querySelector('input[name="security"]:checked').value === 'yes' ){
            securityEspence = document.querySelector('input[name="security-yes-option"]:checked').getAttribute('data-security-price');
            securityEspence = new Number(securityEspence)
     }
