@@ -157,38 +157,38 @@
 
                         <div class="tab my-3">
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
-                                type="text" placeholder="Name" aria-label="default input example">
+                                type="text" placeholder="Name" aria-label="default input example" required>
 
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
-                                type="email" placeholder="Email" aria-label=".form-control-sm example">
+                                type="email" placeholder="Email" aria-label=".form-control-sm example" required>
 
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3" type="tel"
-                                placeholder="Phone" aria-label=".form-control-sm example">
+                                placeholder="Phone" aria-label=".form-control-sm example" required>
                         </div>
 
                         <div class="tab my-3">
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
-                                type="date" placeholder="Date of Arrival:" aria-label="default input example">
+                                type="text" onblur="(this.type='text')" placeholder="Date of Arrival:" onfocus="(this.type='date')" required >
 
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
-                                type="time" placeholder="Time of Arrival" aria-label=".form-control-sm example">
+                                type="text" placeholder="Time of Arrival" onblur="(this.type='text')"  onfocus="(this.type='time')" required>
 
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
-                                type="text" placeholder="Airline" aria-label=".form-control-sm example">
+                                type="text" placeholder="Airline" aria-label=".form-control-sm example" required>
                         </div>
 
                         <div class="tab my-3">
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
-                                type="date" placeholder="Date of Departure" aria-label="default input example">
+                                type="text" placeholder="Date of Departure" onblur="(this.type='text')"  onfocus="(this.type='date')" required>
 
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
                                 type="number" placeholder="How many persons will be arriving?" min="1"
-                                aria-label=".form-control-sm example">
+                                aria-label=".form-control-sm example" required>
 
                             <input class="form-control form-control-sm rounded-0 border-0 border-bottom mb-3"
                                 type="number"
                                 placeholder="Will you have children accommodating you? If so, how many and ages? "
-                                min="1" aria-label=".form-control-sm example">
+                                min="1" aria-label=".form-control-sm example" required>
                         </div>
 
                         <div class="tab my-3">
@@ -198,7 +198,7 @@
                             <div class="mb-3">
                                 <label for="arrival">
                                     <input type="radio" name="escort-service" id="arrival" value=""
-                                        data-escort-price="150" checked="checked">
+                                        data-escort-price="150" checked="checked" required>
                                     Arrival Only $150
                                     <label>
                             </div>
@@ -252,7 +252,7 @@
                                 <h3 class="fs-4">Please indicate if you will need transportation on the day of your
                                     Arrival and Departure</h3>
                                 <label class="mb-3">
-                                    <input type="radio" value="" name="transportation" data-transport-price="40">
+                                    <input type="radio" value="" name="transportation" data-transport-price="40" required>
                                     I will need transportation from the airport to my housing accommodations on the day
                                     of my Arrival. ($40)
                                 </label>
@@ -287,7 +287,7 @@
                             <div class="radio">
                                 <div>
                                     <label class="mb-1">
-                                        <input type="radio" name="security" id="input" value="no">
+                                        <input type="radio" name="security" id="input" value="no" required>
                                         No
                                     </label>
                                 </div>

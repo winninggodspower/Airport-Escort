@@ -29,9 +29,20 @@ function nextPrev(n) {
     if (n == 1 && !validateForm()) return false;
     // Hide the current tab:
     x[currentTab].style.display = "none";
+    
+
+    // checking if the security yes was clicked and the form was not clicked. therefor not letting the use proceed
+    if(document.querySelector('input[name="security"]:checked')){
+        if (document.querySelector('input[name="security"]:checked').value === 'yes' &&  !document.querySelector('input[name="security-yes-option"]:checked')){
+            alert('please choose the form of security')
+            x[currentTab].style.display = "block";
+            return
+        }
+    }
+
     // Increase or decrease the current tab by 1:
     currentTab = currentTab + n;
-
+    
     // if you have reached the second to last input form
     if (currentTab >= x.length - 1) {
         setTotal()
@@ -43,7 +54,7 @@ function nextPrev(n) {
 
         document.querySelector('.modal-content').innerHTML = `
         <div class="modal-header">
-            <h4 class="modal-title text-primary fs-5 flex-grow-1 text-center" id="exampleModalLabel">successfully requested escort</h4>
+            <h1 class="modal-title text-capitalize fs-5 flex-grow-1 text-center" id="exampleModalLabel">successfully requested escort!!</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <img src="./assets/img/thumb-up.png" alt="">`;
